@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  task: 
+  status: 1
+  duration: 1
+  break: false
+
+two:
+  task: 
+  status: 1
+  duration: 1
+  break: false

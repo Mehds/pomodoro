@@ -1,0 +1,21 @@
+<h1>Listing Tasks</h1>
+ 
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Estimate</th>
+    <th>Description</th>
+  </tr>
+ 
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= link_to task.title, task_path(task) %></td>
+      <td><%= task.estimation %></td>
+      <td><%= task.description%></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
+      <td><%= link_to 'Destroy', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'New Task', new_task_path %> 

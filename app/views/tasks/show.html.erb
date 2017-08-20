@@ -1,0 +1,42 @@
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+<p>
+  <strong>Estimate:</strong>
+  <%= @task.estimation %>
+</p>
+<p>
+  <strong>Tell me more:</strong>
+  <%= @task.description %>
+</p>
+<% if @task.cycles.any? %>
+
+	<table>
+	  <tr>
+	    <th>Index</th>
+	    <th>Status</th>
+	    <th>Type</th>
+	  </tr>
+	  <% @task.cycles.each_with_index do |cycle, i| %>
+	    <tr>
+	    	<td><%= i + 1 %></td>
+	     	<td><%= cycle.status %></td>
+	      	<td><%= cycle.break ? 'break' : 'work' %></td>
+	    </tr>
+	  <% end %>
+	</table>
+  <% end %>
+
+<%= form_for([@task, @task.cycles.build]) do |f| %>
+	<p>
+		<%= f.label :duration %>
+		<%= f.number_field :duration %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Edit', edit_task_path(@task) %>
+<%= link_to 'Back', tasks_path %>
